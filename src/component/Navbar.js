@@ -18,16 +18,6 @@ function Nabar() {
             <NavDropdown.Item href="/newton">Newton-Rapshon</NavDropdown.Item>
             <NavDropdown.Item href="/secant">Scant</NavDropdown.Item>
           </NavDropdown>
-          <NavDropdown title="Linear algebraic equation" id="basic-nav-dropdown">
-            <NavDropdown.Item href="/cramer">Cramer's Rule</NavDropdown.Item>
-            <NavDropdown.Item href="/gausseli">Gauss Elimination </NavDropdown.Item>
-            <NavDropdown.Item href="/gaussjordan">Gauss Jordan</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="/lu">LU Decomposition </NavDropdown.Item>
-            <NavDropdown.Item href="/jacobi">Jacobi Iteration</NavDropdown.Item>
-            <NavDropdown.Item href="/gaussseidel">Gauss seidel Iteration  </NavDropdown.Item>
-            <NavDropdown.Item href="/conjugate">Conjugate gradient</NavDropdown.Item>
-          </NavDropdown>
           <NavDropdown title="Simple integral" id="basic-nav-dropdown">
             <NavDropdown.Item href="/singletrap">Trapezoidal Rule</NavDropdown.Item>
             <NavDropdown.Item href="/composittrap">Composite Trapezoidal </NavDropdown.Item>   
