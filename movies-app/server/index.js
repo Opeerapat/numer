@@ -6,8 +6,8 @@ const db = require('./db')
 const movieRouter = require('./routes/movie-router')
 
 const app = express()
-//const apiPort = 8080
-const apiPort = 3000
+const apiPort = 8080
+
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())

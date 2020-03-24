@@ -1,11 +1,9 @@
 import axios from 'axios'
 
-/*const api = axios.create({
-    baseURL: 'http://192.168.99.100:8080/api',
-})*/
 const api = axios.create({
-    baseURL: 'http://localhost:3000/api',
+    baseURL: 'http://192.168.99.100:8080/api',
 })
+
 
 export const insertMovie = payload => api.post(`/movie`, payload)
 export const getAllMovies = () => api.get(`/movies`)
