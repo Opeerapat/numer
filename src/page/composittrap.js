@@ -23,12 +23,13 @@ class composittrap extends Component {
     componentDidMount = async () => {
         await api.getMovieById("5e68e732e4fff62e5c5bdc6f").then(db => {
             this.setState({
-                fx: db.data.data.fx
+                fx: db.data.data.fx,
+                n : db.data.data.n
             })
             this.state.xl[0] = parseFloat(db.data.data.xl);
             this.state.xr[0] = parseFloat(db.data.data.xr);
         })
-        console.log(this.state.fx + this.state.xl + this.state.xr);
+        console.log(this.state.fx + this.state.xl + this.state.xr+this.state.n);
     }
 
     onChangeFX({ target: { value } }) {
@@ -193,7 +194,7 @@ class composittrap extends Component {
               </Button>
 
                 {this.state.showfx &&
-                    <h1>fx={this.state.fx}    xl= {this.state.xl[0]}    xr = {this.state.xr[0]}</h1>
+                    <h1>fx={this.state.fx}    xl= {this.state.xl[0]}    xr = {this.state.xr[0]} n = {this.state.n[0]}</h1>
                 }
                 {this.state.showtable &&
                     <Table striped bordered hover size="sm" striped bordered hover variant="dark">
