@@ -30,7 +30,6 @@ class App extends Component
     return(   
       <React.Fragment>
       <Navbar/>
-      
       <div className = "container">
       <BrowserRouter>
       <Switch>
