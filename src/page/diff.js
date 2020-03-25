@@ -23,7 +23,7 @@ class diff extends Component {
   }
 
   componentDidMount = async () => {
-    await api.getMovieById("5e68e732e4fff62e5c5bdc6f").then(db => {
+    await api.getMovieById("5e7aebb9724efb00194b3f35").then(db => {
       this.setState({
         fx: db.data.data.fx,
         level:db.data.data.level,
@@ -378,10 +378,6 @@ class diff extends Component {
         }
 
 
-        {this.state.showgra && <div>
-          <PlotlyComponent className="whatever" data={data} layout={layout} />
-        </div>
-        }
       </div>
     );
   }
