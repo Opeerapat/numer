@@ -9,7 +9,7 @@ const PlotlyComponent = createPlotlyComponent(Plotly);
 class diff extends Component {
   constructor(props) {
     super(props);
-    this.state = { sd: '', count: 0, value: '', fxl: [], fxr: [], x: [], h: [], level: '', fx: '', oh: '', movie: '', err: [], task: '', showtable: false, showgra: false, showdata: false, showoh: false };
+    this.state = { sd: '', count: 0, value: '', fxl: [], fxr: [], xl:[],xr:[],x: [], h: [], level: '', fx: '', oh: '', movie: '', err: [], task: '', showtable: false, showgra: false, showdata: false, showoh: false ,showexd:false,showfx:false};
     this.onChangeXL = this.onChangeXL.bind(this);
     this.onChangeXR = this.onChangeXR.bind(this);
     this.onChangeSub = this.onChangeSub.bind(this);
@@ -22,30 +22,33 @@ class diff extends Component {
     this.onChangelevel = this.onChangelevel.bind(this);
   }
 
-  /*componentDidMount = async () => {
+  componentDidMount = async () => {
     await api.getMovieById("5e68e732e4fff62e5c5bdc6f").then(db => {
       this.setState({
-        fx: db.data.data.fx
+        fx: db.data.data.fx,
+        level:db.data.data.level,
+        oh:db.data.data.oh,
+        task:db.data.data.task
       })
-      this.state.xl[0] = parseFloat(db.data.data.xl);
-      this.state.xr[0] = parseFloat(db.data.data.xr);
+      this.state.x[0] = parseFloat(db.data.data.x);
+      this.state.h[0] = parseFloat(db.data.data.h);
     })
-    console.log(this.state.fx + this.state.xl + this.state.xr);
-  }*/
+    console.log(this.state.fx + this.state.level + this.state.oh +this.state.task + this.state.x + this.state.h);
+  }
   onChangefor() {
-    this.setState({ task: 'for' });
+    this.setState({ task: 'forward' });
     this.state.showoh = false;
     this.state.showdata = true;
     console.log(this.state.task);
   }
   onChangeback() {
-    this.setState({ task: 'back' });
+    this.setState({ task: 'backward' });
     this.state.showoh = false;
     this.state.showdata = true;
     console.log(this.state.task);
   }
   onChangecen() {
-    this.setState({ task: 'cen' });
+    this.setState({ task: 'central' });
     this.state.showoh = true;
     this.state.showdata = true;
     console.log(this.state.task);
@@ -71,6 +74,10 @@ class diff extends Component {
     console.log(this.state.level);
   }
   onChangeEX() {
+    this.state.showoh=false;
+    this.state.showdata = false;
+    this.state.showexd = true;
+    this.state.showfx = true;
     this.onChangeSub();
   }
   //onChangeSub = (e) => {
@@ -83,7 +90,7 @@ class diff extends Component {
     console.log(fxd + x + h + this.state.level + this.state.oh + this.state.task + xd);
     var errordi = 0;
     var errori = 0;
-    if (this.state.task == 'for') {
+    if (this.state.task == 'forward') {
       if (this.state.oh == '1') {
         if (this.state.level == '1') {
           errordi = (this.functionfx({ x: x + h }) - this.functionfx({ x: x })) / h;
@@ -121,7 +128,7 @@ class diff extends Component {
         }
       }
     }
-    else if (this.state.task == 'back') {
+    else if (this.state.task == 'backward') {
       if (this.state.oh == '1') {
         if (this.state.level == '1') {
           errordi = (this.functionfx({ x: x }) - this.functionfx({ x: x - h })) / h;
@@ -159,7 +166,7 @@ class diff extends Component {
         }
       }
     }
-    else if (this.state.task == 'cen') {
+    else if (this.state.task == 'central') {
       if (this.state.oh == '2') {
         if (this.state.level == '1') {
           errordi = (this.functionfx({ x: x + h }) - this.functionfx({ x: x - h })) / (2 * h);
@@ -205,6 +212,8 @@ class diff extends Component {
        i++;
     }
     errori =evaluate(fxd,{x:x});
+    this.state.xl[0] =  errori;
+    this.state.xr[0] = errordi;
     this.state.err[0] = abs((errori-errordi)/errori);
     console.log(errori + ' ' + errordi);
     console.log(this.state.err[0]);
@@ -224,7 +233,7 @@ class diff extends Component {
     return abs((xn - xo) / xn);
   };
 
-  plot() {
+  /*plot() {
     const xl_plot = this.state.xl;
     const yl_plot = this.state.fxl;
     const xr_plot = this.state.xr;
@@ -252,16 +261,16 @@ class diff extends Component {
     ];
     console.log(data);
     return data
-  }
+  }*/
   render() {
-    var i = 0;
+    /*var i = 0;
     let data = this.plot()
     let layout = {
       title: '',
       xaxis: {
         title: '',
       },
-    };
+    };*/
     return (
       <div>
         <h2>Differentiation</h2>
@@ -273,6 +282,10 @@ class diff extends Component {
               </Button>
         <Button variant="outline-warning" type="submit" onClick={this.onChangecen}>
           Central
+              </Button>
+              
+          <Button variant="outline-warning" type="submit" onClick={this.onChangeEX}>
+            Example
               </Button>
         <br /><br /><br />
         {this.state.showdata &&
@@ -333,11 +346,36 @@ class diff extends Component {
           <Button variant="outline-primary" type="submit" onClick={this.onChangeSub}>
             Submit
               </Button>}
-        {this.state.showdata &&
-          <Button variant="outline-warning" type="submit" onClick={this.onChangeEX}>
-            Example
-              </Button>}
-
+        {this.state.showfx&&
+           <h1>fx={this.state.fx}    x= {this.state.x[0]}    h = {this.state.h[0]} task ={this.state.n}  oh = {this.state.oh} level Differentiation = {this.state.level} </h1>
+        }
+        {this.state.showexd &&
+             <Table striped bordered hover size="sm" striped bordered hover variant="dark">
+             <thead>
+               <tr>
+                 <th>i</th>
+                 <th>h</th>
+                 <th>error</th>
+               </tr>
+             </thead>
+             <tbody>
+               <tr>
+                 <td>{this.state.xl.map((num, index) => {
+                   return <div>{num.toFixed(6)}</div>
+                 })}
+                 </td>
+                 <td>{this.state.xr.map((num, index) => {
+                   return <div>{num.toFixed(6)}</div>
+                 })}
+                 </td>
+                 <td>{this.state.err.map((num, index) => {
+                   return <div>{num.toFixed(6)}</div>
+                 })}
+                 </td>
+               </tr>
+             </tbody>
+           </Table>
+        }
 
 
         {this.state.showgra && <div>

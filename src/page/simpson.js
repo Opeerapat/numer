@@ -21,7 +21,7 @@ class simpson extends Component {
     }
 
     componentDidMount = async () => {
-        await api.getMovieById("5e68e732e4fff62e5c5bdc6f").then(db => {
+        await api.getMovieById("5e7adc8bd1932400197aae0d").then(db => {
             this.setState({
                 fx: db.data.data.fx
             })
