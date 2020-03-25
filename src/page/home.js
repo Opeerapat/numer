@@ -1,48 +1,68 @@
 import React, { Component } from 'react';
 import {Carousel} from 'react-bootstrap';
+import a1 from '../asset/a1.png'
+import a2 from '../asset/a2.jpeg'
+import a3 from '../asset/a3.png'
+import a5 from '../asset/a5.png'
+import a6 from '../asset/a6.png'
+
 class home extends Component
 {
     render()
     {
         
         return(
+          <div>
             <Carousel>
             <Carousel.Item>
-              <img
+            <img
                 className="d-block w-100"
-                src="holder.js/800x400?text=First slide&bg=373940"
-                alt="First slide"
+                src={a1}
+                width = "800"
+                height = "400"
+                alt="Third slide"
               />
-              <Carousel.Caption>
-                <h3>First slide label</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-              </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src="holder.js/800x400?text=Second slide&bg=282c34"
+                src={a2}
+                width = "1000"
+                height = "400"
                 alt="Third slide"
               />
-          
-              <Carousel.Caption>
-                <h3>Second slide label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-              <img
+            <img
                 className="d-block w-100"
-                src="holder.js/800x400?text=Third slide&bg=20232a"
+                src={a3}
+                width = "1000"
+                height = "400"
                 alt="Third slide"
               />
-          
-              <Carousel.Caption>
-                <h3>Third slide label</h3>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+            <img
+                className="d-block w-100"
+                src={a5}
+                width = "1000"
+                height = "400"
+                alt="Third slide"
+              />
+            </Carousel.Item>
+            <Carousel.Item>
+            <img
+                className="d-block w-100"
+                src={a6}
+                width = "1000"
+                height = "400"
+                alt="Third slide"
+              />
             </Carousel.Item>
           </Carousel>
+
+          <h1>Welcome to  Numer Website</h1>
+          </div>
         );
     }
 }
