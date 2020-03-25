@@ -128,7 +128,7 @@ class falseposit extends Component {
         x: xl_plot,
         y: yl_plot,
         marker: {
-          color: '#ff6d00'
+          color: '#7D6608'
         },
         name: 'XL'
       },
@@ -137,7 +137,7 @@ class falseposit extends Component {
         x: xr_plot,
         y: yr_plot,
         marker: {
-          color: '#ffab00'
+          color: '#1B2631'
         },
         name: 'XR'
       },

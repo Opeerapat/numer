@@ -83,7 +83,7 @@ class onepoint extends Component {
         x: xl_plot,
         y: yl_plot,
         marker: {
-          color: '#ff6d00'
+          color: '#1B2631'
         },
         name: 'XL'
       },
