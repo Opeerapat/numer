@@ -53,7 +53,6 @@ class composittrap extends Component {
         this.state.showfx = true;
         this.onChangeSub();
     }
-    //onChangeSub = (e) => {
     onChangeSub() {
         this.state.showfx = true;
         var p = 0, k = 0, errord = 0, che = 0, chf = 0;
@@ -101,7 +100,7 @@ class composittrap extends Component {
         this.state.showgra = true;
         console.log(this.state.showtable);
         console.log(this.state.showgra);
-        //e.preventDefault();
+       
     };
     functionfx = (x) => {
         return evaluate(this.state.fx, x);
@@ -109,46 +108,8 @@ class composittrap extends Component {
     errors = (xo, xn) => {
         return abs((xn - xo) / xn);
     };
-
-
-    /*plot() {
-        const xl_plot = this.state.xl;
-        const yl_plot = this.state.fxl;
-        const xr_plot = this.state.xr;
-        const yr_plot = this.state.fxr;
-        var data = [
-            {
-                type: 'scatter',
-                x: xl_plot,
-                y: yl_plot,
-                marker: {
-                    color: '#ff6d00'
-                },
-                name: 'XL'
-            },
-            {
-                type: 'scatter',
-                x: xr_plot,
-                y: yr_plot,
-                marker: {
-                    color: '#ffab00'
-                },
-                name: 'XR'
-            },
-
-        ];
-        console.log(data);
-        return data
-    }*/
     render() {
         var i = 0;
-        /*let data = this.plot()
-        let layout = {
-            title: '',
-            xaxis: {
-                title: '',
-            },
-        };*/
         return (
             <div>
                 <h2>Composite Trapezoidal Rule</h2>

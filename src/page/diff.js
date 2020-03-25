@@ -80,7 +80,6 @@ class diff extends Component {
     this.state.showfx = true;
     this.onChangeSub();
   }
-  //onChangeSub = (e) => {
   onChangeSub() {
     var i = 0, k = 0, errord = 0, che = 0, chf = 0;
     var fxd = this.state.fx;
@@ -204,7 +203,6 @@ class diff extends Component {
         }
       }
     }
-   
     while(i<parseFloat(this.state.level))
     {
        fxd = derivative(fxd,'x').toString();
@@ -223,8 +221,6 @@ class diff extends Component {
     })
     this.state.showtable = true;
     this.state.showgra = true;
-
-    //e.preventDefault();
   };
   functionfx = (x) => {
     return evaluate(this.state.fx, x);
@@ -232,45 +228,7 @@ class diff extends Component {
   errors = (xo, xn) => {
     return abs((xn - xo) / xn);
   };
-
-  /*plot() {
-    const xl_plot = this.state.xl;
-    const yl_plot = this.state.fxl;
-    const xr_plot = this.state.xr;
-    const yr_plot = this.state.fxr;
-    var data = [
-      {
-        type: 'scatter',
-        x: xl_plot,
-        y: yl_plot,
-        marker: {
-          color: '#ff6d00'
-        },
-        name: 'XL'
-      },
-      {
-        type: 'scatter',
-        x: xr_plot,
-        y: yr_plot,
-        marker: {
-          color: '#ffab00'
-        },
-        name: 'XR'
-      },
-
-    ];
-    console.log(data);
-    return data
-  }*/
   render() {
-    /*var i = 0;
-    let data = this.plot()
-    let layout = {
-      title: '',
-      xaxis: {
-        title: '',
-      },
-    };*/
     return (
       <div>
         <h2>Differentiation</h2>

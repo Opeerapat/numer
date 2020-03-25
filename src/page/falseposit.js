@@ -44,7 +44,6 @@ class falseposit extends Component {
     this.state.showfx = true;
     this.onChangeSub();
   }
-  //onChangeSub = (e) => {
   onChangeSub() {
     var i = 1, k = 0, errord = 0, che = 0, chf = 0;
     var fxd = this.state.fx;
@@ -108,8 +107,6 @@ class falseposit extends Component {
     console.log(this.state.showgra);
     console.log("xl = ", this.state.xl, "xr = ", this.state.xr, "xm = ", this.state.xm, "error = ", this.state.err)
     console.log('i:' + i + 'k:' + k + 'che:' + che + 'chf' + chf)
-
-    //e.preventDefault();
   };
   functionfx = (x) => {
     return evaluate(this.state.fx, x);
