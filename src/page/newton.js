@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, Row, Col, Table } from 'react-bootstrap';
-import { evaluate, compile, abs ,derivative } from 'mathjs'
+import { evaluate, compile, abs, derivative } from 'mathjs'
 import api from '../api/index';
 import createPlotlyComponent from 'react-plotlyjs';
 import Plotly from 'plotly.js/dist/plotly-cartesian';
@@ -9,7 +9,7 @@ const PlotlyComponent = createPlotlyComponent(Plotly);
 class newton extends Component {
   constructor(props) {
     super(props);
-    this.state = {sd: '', count: 0, value: '', fxl: [], xl: [], fx: '', movie: '', err: [], showtable: false, showgra: false,showfx:false };
+    this.state = { sd: '', count: 0, value: '', fxl: [], xl: [], fx: '', movie: '', err: [], showtable: false, showgra: false, showfx: false };
     this.onChangeXL = this.onChangeXL.bind(this);
     this.onChangeSub = this.onChangeSub.bind(this);
     this.onChangeFX = this.onChangeFX.bind(this);
@@ -22,9 +22,9 @@ class newton extends Component {
         fx: db.data.data.fx
       })
       this.state.xl[0] = parseFloat(db.data.data.xl);
-      
+
     })
-    console.log(this.state.fx + this.state.xl );
+    console.log(this.state.fx + this.state.xl);
   }
   onChangeFX({ target: { value } }) {
     this.setState({ fx: value });
@@ -34,20 +34,19 @@ class newton extends Component {
     this.state.xl[0] = parseFloat(value);
     console.log(this.state.xl);
   }
-  onChangeEX()
-  {
+  onChangeEX() {
     this.state.showfx = true;
     this.onChangeSub();
   }
-  //onChangeSub = (e) => {
+
   onChangeSub() {
-    var i = 1, errord = 0, che = 0,chf=0;
+    var i = 1, errord = 0, che = 0, chf = 0;
     var xl = parseFloat(this.state.xl);
     this.state.fxl[chf] = this.functionfx({ x: xl });
     chf++;
     do {
-      this.state.xl[i] =xl-(this.functionfx({x:xl})/this.functiondif({x:xl}));
-      this.state.fxl[chf] = this.functionfx({x:this.state.xl[i]});
+      this.state.xl[i] = xl - (this.functionfx({ x: xl }) / this.functiondif({ x: xl }));
+      this.state.fxl[chf] = this.functionfx({ x: this.state.xl[i] });
       errord = this.errors(this.state.xl[i - 1], this.state.xl[i]);
       this.state.err[che] = errord;
       xl = this.state.xl[i];
@@ -63,16 +62,16 @@ class newton extends Component {
     this.state.showgra = true;
     console.log(this.state.showtable);
     console.log(this.state.showgra);
-    console.log("xl = "+ this.state.xl+"fxl = "+ this.state.fxl+"error = "+ this.state.err)
+    console.log("xl = " + this.state.xl + "fxl = " + this.state.fxl + "error = " + this.state.err)
     console.log('i:' + i + 'che:' + che + 'chf' + chf)
 
-   //e.preventDefault();
+
   };
   functionfx = (x) => {
     return evaluate(this.state.fx, x);
   };
-  functiondif=(x)=>{
-    return derivative(this.state.fx,'x').evaluate(x);
+  functiondif = (x) => {
+    return derivative(this.state.fx, 'x').evaluate(x);
   }
   errors = (xo, xn) => {
     return abs((xn - xo) / xn);
@@ -131,8 +130,8 @@ class newton extends Component {
           Example
               </Button>
 
-              {this.state.showfx &&
-           <h1>fx={this.state.fx}    xl= {this.state.xl[0]}  </h1>
+        {this.state.showfx &&
+          <h1>fx={this.state.fx}    xl= {this.state.xl[0]}  </h1>
         }
         {this.state.showtable &&
           <Table striped bordered hover size="sm" striped bordered hover variant="dark">
@@ -140,7 +139,7 @@ class newton extends Component {
               <tr>
                 <th>iteration</th>
                 <th>x</th>
-                <th>fx</th>          
+                <th>fx</th>
                 <th>error</th>
               </tr>
             </thead>

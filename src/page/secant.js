@@ -9,7 +9,7 @@ const PlotlyComponent = createPlotlyComponent(Plotly);
 class secant extends Component {
   constructor(props) {
     super(props);
-    this.state = { sd: '', count: 0, value: '', fxl: [], xl: [], fx: '', movie: '', err: [], showtable: false, showgra: false,showfx:false };
+    this.state = { sd: '', count: 0, value: '', fxl: [], xl: [], fx: '', movie: '', err: [], showtable: false, showgra: false, showfx: false };
     this.onChangeXL = this.onChangeXL.bind(this);
     this.onChangeSub = this.onChangeSub.bind(this);
     this.onChangeFX = this.onChangeFX.bind(this);
@@ -39,13 +39,12 @@ class secant extends Component {
     this.state.xl[1] = parseFloat(value);
     console.log(this.state.xl);
   }
-  onChangeEX()
-  {
+  onChangeEX() {
     this.state.showfx = true;
     this.onChangeSub();
   }
-  //onChangeSub = (e) => {
-    onChangeSub() {
+
+  onChangeSub() {
     var i = 2, errord = 0, che = 0, chf = 0;
     var xl = parseFloat(this.state.xl);
     var xr = parseFloat(this.state.xl[1]);
@@ -76,7 +75,7 @@ class secant extends Component {
     console.log("xl = " + this.state.xl + "fxl = " + this.state.fxl + "error = " + this.state.err)
     console.log('i:' + i + 'che:' + che + 'chf' + chf)
 
-   // e.preventDefault();
+
   };
   functionfx = (x) => {
     return evaluate(this.state.fx, x);
@@ -149,8 +148,8 @@ class secant extends Component {
         <Button variant="outline-warning" type="submit" onClick={this.onChangeEX}>
           Example
               </Button>
-              {this.state.showfx &&
-           <h1>fx={this.state.fx}    x0= {this.state.xl[0]}    x1 = {this.state.xl[1]}</h1>
+        {this.state.showfx &&
+          <h1>fx={this.state.fx}    x0= {this.state.xl[0]}    x1 = {this.state.xl[1]}</h1>
         }
 
         {this.state.showtable &&

@@ -39,7 +39,7 @@ class onepoint extends Component {
     this.state.showfx = true;
     this.onChangeSub();
   }
-  //onChangeSub = (e) => {
+  
   onChangeSub() {
     var i = 1, errord = 0, che = 0,chf=0;
     var xl = parseFloat(this.state.xl);
@@ -66,7 +66,7 @@ class onepoint extends Component {
     console.log("xl = "+ this.state.xl+"fxl = "+ this.state.fxl+"error = "+ this.state.err)
     console.log('i:' + i + 'che:' + che + 'chf' + chf)
 
-    //e.preventDefault();
+    
   };
   functionfx = (x) => {
     return evaluate(this.state.fx, x);
