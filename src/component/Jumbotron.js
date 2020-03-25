@@ -1,16 +1,11 @@
 import React from 'react';
 import { Jumbotron as Jumbo, Container } from 'react-bootstrap';
 import styled from 'styled-components';
-import a1 from '../asset/a1.png';
+import a1 from '../asset/a5.png';
 
 const Styles = styled.div`
   .jumbo {
     background: url(${a1}) no-repeat fixed bottom;
-    background-size: cover;
-    color: 	#FFFFFF;
-    height: 600px;
-    position: relative;
-    z-index: -2;
   }
   .overlay {
     background-color: #000;
