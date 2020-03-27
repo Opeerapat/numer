@@ -305,7 +305,7 @@ class diff extends Component {
             Submit
               </Button>}
         {this.state.showfx&&
-           <h1>fx={this.state.fx}    x= {this.state.x[0]}    h = {this.state.h[0]} task ={this.state.n}  oh = {this.state.oh} level Differentiation = {this.state.level} </h1>
+           <h1>fx={this.state.fx}    x= {this.state.x[0]}    h = {this.state.h[0]} task ={this.state.task}  oh = {this.state.oh} level Differentiation = {this.state.level} </h1>
         }
         {this.state.showexd &&
              <Table striped bordered hover size="sm" striped bordered hover variant="dark">
