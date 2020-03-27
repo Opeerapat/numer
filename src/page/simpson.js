@@ -43,18 +43,17 @@ class simpson extends Component {
         this.state.xl[0] = parseFloat(value);
         console.log(this.state.xl);
     }
-    onChangeadd = async () =>
-  {
-    var xl = this.state.xl[0].toString();
-    var xr = this.state.xr[0].toString();
-    const{fx} = this.state
-    const payload =  {fx,xl,xr}
-   
-    await api.insertMovie(payload).then(res=>{
-      window.alert(`Movie inserted successfully`)
-      console.log("Movie inserted successfully")
-    })
-  }
+    onChangeadd = async () => {
+        var xl = this.state.xl[0].toString();
+        var xr = this.state.xr[0].toString();
+        const { fx } = this.state
+        const payload = { fx, xl, xr }
+
+        await api.insertMovie(payload).then(res => {
+            window.alert(`Movie inserted successfully`)
+            console.log("Movie inserted successfully")
+        })
+    }
     onChangeEX() {
         this.state.showfx = true;
         this.onChangeSub();
@@ -147,8 +146,8 @@ class simpson extends Component {
                 <Button variant="outline-warning" type="submit" onClick={this.onChangeEX}>
                     Example
               </Button>
-              <Button variant="outline-warning" type="submit" onClick={this.onChangeadd}>
-              Add to database
+                <Button variant="outline-warning" type="submit" onClick={this.onChangeadd}>
+                    Add to database
               </Button>
                 {this.state.showfx &&
                     <h1>fx={this.state.fx}    xl= {this.state.xl[0]}    xr = {this.state.xr[0]}</h1>
