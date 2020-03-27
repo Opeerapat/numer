@@ -15,7 +15,7 @@ class bisec extends Component {
     this.onChangeSub = this.onChangeSub.bind(this);
     this.onChangeFX = this.onChangeFX.bind(this);
     this.onChangeEX = this.onChangeEX.bind(this);
-
+    this.onChangeadd = this.onChangeadd.bind(this);
   }
 
   componentDidMount = async () => {
@@ -35,17 +35,31 @@ class bisec extends Component {
   }
   onChangeXR({ target: { value } }) {
     this.state.xr[0] = parseFloat(value);
+    
     console.log(this.state.xr);
   }
   onChangeXL({ target: { value } }) {
     this.state.xl[0] = parseFloat(value);
+  
     console.log(this.state.xl);
   }
   onChangeEX() {
     this.state.showfx = true;
+    this.state.adddb = true;
     this.onChangeSub();
   }
-
+  onChangeadd = async () =>
+  {
+    var xl = this.state.xl[0].toString();
+    var xr = this.state.xr[0].toString();
+    const{fx} = this.state
+    const payload =  {fx,xl,xr}
+   
+    await api.insertMovie(payload).then(res=>{
+      window.alert(`Movie inserted successfully`)
+      console.log("Movie inserted successfully")
+    })
+  }
   onChangeSub() {
     var i = 1, k = 0, errord = 0, che = 0, chf = 0;
     var fxd = this.state.fx;
@@ -194,6 +208,10 @@ class bisec extends Component {
         <Button variant="outline-warning" type="submit" onClick={this.onChangeEX}>
           Example
               </Button>
+          <Button variant="outline-warning" type="submit" onClick={this.onChangeadd}>
+              Add to database
+              </Button>
+              
 
         {this.state.showfx &&
            <h1>fx={this.state.fx}    xl= {this.state.xl[0]}    xr = {this.state.xr[0]}</h1>

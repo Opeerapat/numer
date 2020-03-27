@@ -18,18 +18,19 @@ class composittrap extends Component {
         this.onChangeFX = this.onChangeFX.bind(this);
         this.onChangeEX = this.onChangeEX.bind(this);
         this.onChangeN = this.onChangeN.bind(this);
+        this.onChangeadd = this.onChangeadd.bind(this);
     }
 
     componentDidMount = async () => {
         await api.getMovieById("5e7adb71819e5800194a432f").then(db => {
             this.setState({
                 fx: db.data.data.fx,
-                n : db.data.data.n
+                n: db.data.data.n
             })
             this.state.xl[0] = parseFloat(db.data.data.xl);
             this.state.xr[0] = parseFloat(db.data.data.xr);
         })
-        console.log(this.state.fx + this.state.xl + this.state.xr+this.state.n);
+        console.log(this.state.fx + this.state.xl + this.state.xr + this.state.n);
     }
 
     onChangeFX({ target: { value } }) {
@@ -53,6 +54,17 @@ class composittrap extends Component {
         this.state.showfx = true;
         this.onChangeSub();
     }
+    onChangeadd = async () => {
+        var xl = this.state.xl[0].toString();
+        var xr = this.state.xr[0].toString();
+        const { fx, n } = this.state
+        const payload = { fx, xl, xr, n }
+
+        await api.insertMovie(payload).then(res => {
+            window.alert(`Movie inserted successfully`)
+            console.log("Movie inserted successfully")
+        })
+    }
     onChangeSub() {
         this.state.showfx = true;
         var p = 0, k = 0, errord = 0, che = 0, chf = 0;
@@ -69,20 +81,18 @@ class composittrap extends Component {
         var i = evaluate(fxx, { x: xr }) - evaluate(fxx, { x: xl });
         console.log(i);
         var id = ((xr - xl) / nx);
-        console.log("id:"+id);
-        for(p=0;p<=nx;p++) {
-            console.log("xl:"+xl);
-            if(xl==xlo||xl==xro)
-            {
+        console.log("id:" + id);
+        for (p = 0; p <= nx; p++) {
+            console.log("xl:" + xl);
+            if (xl == xlo || xl == xro) {
                 sum = sum + (this.functionfx({ x: xl }));
             }
-            else
-            {
-                sum = sum + (2*this.functionfx({ x: xl }));
+            else {
+                sum = sum + (2 * this.functionfx({ x: xl }));
             }
-            console.log("sum:"+sum);
+            console.log("sum:" + sum);
             xl = xl + id;
-           
+
         }
         console.log(sum);
         var h = (id / 2) * sum;
@@ -100,7 +110,7 @@ class composittrap extends Component {
         this.state.showgra = true;
         console.log(this.state.showtable);
         console.log(this.state.showgra);
-       
+
     };
     functionfx = (x) => {
         return evaluate(this.state.fx, x);
@@ -153,7 +163,9 @@ class composittrap extends Component {
                 <Button variant="outline-warning" type="submit" onClick={this.onChangeEX}>
                     Example
               </Button>
-
+                <Button variant="outline-warning" type="submit" onClick={this.onChangeadd}>
+                    Add to database
+              </Button>
                 {this.state.showfx &&
                     <h1>fx={this.state.fx}    xl= {this.state.xl[0]}    xr = {this.state.xr[0]} n = {this.state.n[0]}</h1>
                 }

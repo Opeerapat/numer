@@ -14,6 +14,7 @@ class newton extends Component {
     this.onChangeSub = this.onChangeSub.bind(this);
     this.onChangeFX = this.onChangeFX.bind(this);
     this.onChangeEX = this.onChangeEX.bind(this);
+    this.onChangeadd = this.onChangeadd.bind(this);
   }
 
   componentDidMount = async () => {
@@ -38,7 +39,17 @@ class newton extends Component {
     this.state.showfx = true;
     this.onChangeSub();
   }
-
+  onChangeadd = async () =>
+  {
+    var xl = this.state.xl[0].toString();
+    const{fx} = this.state
+    const payload =  {fx,xl}
+   
+    await api.insertMovie(payload).then(res=>{
+      window.alert(`Movie inserted successfully`)
+      console.log("Movie inserted successfully")
+    })
+  }
   onChangeSub() {
     var i = 1, errord = 0, che = 0, chf = 0;
     var xl = parseFloat(this.state.xl);
@@ -129,7 +140,9 @@ class newton extends Component {
         <Button variant="outline-warning" type="submit" onClick={this.onChangeEX}>
           Example
               </Button>
-
+              <Button variant="outline-warning" type="submit" onClick={this.onChangeadd}>
+              Add to database
+              </Button>
         {this.state.showfx &&
           <h1>fx={this.state.fx}    xl= {this.state.xl[0]}  </h1>
         }
